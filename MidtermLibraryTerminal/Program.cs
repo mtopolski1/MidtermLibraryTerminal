@@ -7,6 +7,7 @@ namespace MidtermLibraryTerminal
         static void Main(string[] args)
         {
             Console.WriteLine("This is the Midterm Project! Library Terminal. Team members Kate, Morgan and Mark");
+            //Kate added a comment
         }
     }
 }
