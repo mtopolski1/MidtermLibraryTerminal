@@ -25,6 +25,18 @@ namespace MidtermLibraryTerminal
             //Menu.MenuStart(testList, "Welcome to the Library Terminal. Would you like to:\n");
             #endregion
         }
+        static void MainMenu()
+        {
+            Option listBooks = new Option("View entire book list", ListBooks);
+            Option titleSearch = new Option("Search by Title", TitleSearch);
+            Option authorSearch = new Option("Search by Author", AuthorSearch);
+            Option bookReturn = new Option("Return a book", BookReturn);
+            Option saveQuit = new Option("Quit", SaveAndQuit);
+
+
+            List<Option> testList = new List<Option> { listBooks, titleSearch, authorSearch, bookReturn, saveQuit };
+            Menu.MenuStart(testList, "Welcome to the Library Terminal. Would you like to:\n");
+        }
         static void ListBooks()
         {
             Console.Clear();
@@ -35,35 +47,35 @@ namespace MidtermLibraryTerminal
             {
                 Title = "Test book one",
                 Author = "Test author one",
-                Status = true,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookTwo = new Book
             {
                 Title = "Test book two",
                 Author = "Test author two",
-                Status = true,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookThree = new Book
             {
                 Title = "Test book three",
                 Author = "Test author three",
-                Status = false,
+                CheckedOut = false,
                 DueDate = DateTime.Today
             };
             Book bookFour = new Book
             {
                 Title = "Test book four",
                 Author = "Test author four",
-                Status = true,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookFive = new Book
             {
                 Title = "Test book five",
                 Author = "Test author five",
-                Status = true,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
 
@@ -73,7 +85,34 @@ namespace MidtermLibraryTerminal
             {
                 Console.WriteLine($"{book.Title} - {book.Author}");
             }
+
+            List<Option> bookOptions = new List<Option>
+            {
+                new Option($"{bookOne.Title} - {bookOne.Author}", BookListSelection(bookOne)),
+                new Option($"{bookTwo.Title} - {bookTwo.Author}", )
+            };
             //back to the previous menu
+            
+        }
+        static Action BookListSelection(Book input)
+        {
+            if (input.CheckedOut == false)
+            {
+                Menu.MenuStart();
+                List<Option> options = new List<Option> 
+                {
+                    new Option("Yes", ),
+                    new Option("No", ListBooks)
+                };
+                Console.WriteLine("This book is available. Would you like to check it out?");
+            }
+        }
+        
+        static void BookListConfirmCheckout(Book input)
+        {
+            input.CheckedOut = true;
+            input.DueDate = DateTime.Today.AddDays(14);
+            
         }
 
         static void TitleSearch()
