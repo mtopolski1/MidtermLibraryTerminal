@@ -14,14 +14,4 @@ namespace MidtermLibraryTerminal
             Selected = selected;
         }
     }
-    class VariantOption
-    {
-        public string OptionText { get; }
-        public Action<Book> Selected { get; }
-        public VariantOption(string optionText, Action<Book> selected)
-        {
-            OptionText = optionText;
-            Selected = selected;
-        }
-    }
 }
