@@ -35,35 +35,35 @@ namespace MidtermLibraryTerminal
             {
                 Title = "Test book one",
                 Author = "Test author one",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookTwo = new Book
             {
                 Title = "Test book two",
                 Author = "Test author two",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookThree = new Book
             {
                 Title = "Test book three",
                 Author = "Test author three",
-                Status = false,
+                CheckedOut = false,
                 DueDate = DateTime.Today
             };
             Book bookFour = new Book
             {
                 Title = "Test book four",
                 Author = "Test author four",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookFive = new Book
             {
                 Title = "Test book five",
                 Author = "Test author five",
-                Status = true,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
 
@@ -78,16 +78,177 @@ namespace MidtermLibraryTerminal
 
         static void TitleSearch()
         {
-            //BookInOut();
+            Book bookOne = new Book
+            {
+                Title = "Test book one",
+                Author = "Test author one",
+                CheckedOut = false,
+                DueDate = DateTime.Now
+            };
+            Book bookTwo = new Book
+            {
+                Title = "Test book two",
+                Author = "Test author two",
+                CheckedOut = false,
+                DueDate = DateTime.Now
+            };
+            Book bookThree = new Book
+            {
+                Title = "Test book three",
+                Author = "Test author three",
+                CheckedOut = false,
+                DueDate = DateTime.Today
+            };
+            Book bookFour = new Book
+            {
+                Title = "Test book four",
+                Author = "Test author four",
+                CheckedOut = false,
+                DueDate = DateTime.Now
+            };
+            Book bookFive = new Book
+            {
+                Title = "Test book five",
+                Author = "Test author five",
+                CheckedOut = false,
+                DueDate = DateTime.Now
+            };
+
+            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+
+            Console.WriteLine("Please enter a book title:");
+            var userTitle = Console.ReadLine().ToLower();
+            //var titleSelection = bookList.Where(x => userTitle.Contains(x.Title));
+            bool match = false;
+            foreach (var book in bookList)
+            {
+                if(userTitle == book.Title.ToLower())
+                {
+                    match = true;
+                    book.CheckOut();
+                    break;
+                }
+            }
 
         }
         static void AuthorSearch()
         {
+            Book bookOne = new Book
+            {
+                Title = "Test book one",
+                Author = "Test author one",
+                CheckedOut = true,
+                DueDate = DateTime.Now
+            };
+            Book bookTwo = new Book
+            {
+                Title = "Test book two",
+                Author = "Test author two",
+                CheckedOut = true,
+                DueDate = DateTime.Now
+            };
+            Book bookThree = new Book
+            {
+                Title = "Test book three",
+                Author = "Test author three",
+                CheckedOut = false,
+                DueDate = DateTime.Today
+            };
+            Book bookFour = new Book
+            {
+                Title = "Test book four",
+                Author = "Test author four",
+                CheckedOut = true,
+                DueDate = DateTime.Now
+            };
+            Book bookFive = new Book
+            {
+                Title = "Test book five",
+                Author = "Test author five",
+                CheckedOut = true,
+                DueDate = DateTime.Now
+            };
+
+            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+
+            Console.WriteLine("Please enter an author:");
+            var userAuthor = Console.ReadLine().ToLower();
+            bool match = false;
+            foreach (var book in bookList)
+            {
+                if (userAuthor == book.Author.ToLower())
+                {
+                    match = true;
+                    book.CheckOut();
+                    break;
+                }
+            }
 
         }
         static void BookReturn()
         {
+            Book bookOne = new Book
+            {
+                Title = "Test book one",
+                Author = "Test author one",
+                CheckedOut = true,
+                DueDate = DateTime.Now
+            };
+            Book bookTwo = new Book
+            {
+                Title = "Test book two",
+                Author = "Test author two",
+                CheckedOut = true,
+                DueDate = DateTime.Now
+            };
+            Book bookThree = new Book
+            {
+                Title = "Test book three",
+                Author = "Test author three",
+                CheckedOut = false,
+                DueDate = DateTime.Today
+            };
+            Book bookFour = new Book
+            {
+                Title = "Test book four",
+                Author = "Test author four",
+                CheckedOut = true,
+                DueDate = DateTime.Now
+            };
+            Book bookFive = new Book
+            {
+                Title = "Test book five",
+                Author = "Test author five",
+                CheckedOut = true,
+                DueDate = DateTime.Now
+            };
 
+            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+
+            Console.WriteLine("Please enter book title to return:");
+            var userReturn = Console.ReadLine().ToLower();
+            bool match = false;
+            foreach (var book in bookList)
+            {
+                if (userReturn == book.Title.ToLower())
+                {
+                    Console.WriteLine($"Are you sure you want to return{userReturn}?");
+                    match = true;
+                    book.CheckedOut = false;
+                    break;
+                }
+            }
+
+            if (match == false)
+            {
+                List<Option> options = new List<Option>
+                {
+                    new Option("Return another book", BookReturn),
+                    new Option("Return to main menu", MainMenu),
+                    new Option("Quit", SaveAndQuit)
+                };
+                Menu.MenuStart(options, $"Sorry, \"{userReturn}\" does not match any titles in this library.");
+            }
         }
         static void SaveAndQuit()
         {

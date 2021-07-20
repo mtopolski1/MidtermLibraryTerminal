@@ -8,7 +8,7 @@ namespace MidtermLibraryTerminal
     {
         public string Title { get; set; }
         public string Author { get; set; }
-        public bool Status { get; set; } //true = available, false = not available (has been checked out)
+        public bool CheckedOut { get; set; } //true = available, false = not available (has been checked out)
         public DateTime DueDate { get; set; }
         public Book()
         {
