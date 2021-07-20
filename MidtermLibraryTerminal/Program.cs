@@ -105,9 +105,73 @@ namespace MidtermLibraryTerminal
 
         static void BookListConfirmCheckout(Book input)
         {
+<<<<<<< HEAD
             input.CheckedOut = true;
             input.DueDate = DateTime.Today.AddDays(14);
+=======
+            Book bookOne = new Book
+            {
+                Title = "Test book one",
+                Author = "Test author one",
+                Status = true,
+                DueDate = DateTime.Now
+            };
+            Book bookTwo = new Book
+            {
+                Title = "Test book two",
+                Author = "Test author two",
+                Status = true,
+                DueDate = DateTime.Now
+            };
+            Book bookThree = new Book
+            {
+                Title = "Test book three",
+                Author = "Test author three",
+                Status = false,
+                DueDate = DateTime.Today
+            };
+            Book bookFour = new Book
+            {
+                Title = "Test book four",
+                Author = "Test author four",
+                Status = true,
+                DueDate = DateTime.Now
+            };
+            Book bookFive = new Book
+            {
+                Title = "Test book five",
+                Author = "Test author five",
+                Status = true,
+                DueDate = DateTime.Now
+            };
 
+            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+>>>>>>> KatesBranch
+
+            Console.WriteLine("Please enter a book title:");
+            var userTitle = Console.ReadLine().ToLower();
+            //var titleSelection = bookList.Where(x => userTitle.Contains(x.Title));
+            bool match = false;
+            foreach (var book in bookList)
+            {
+                if(userTitle == book.Title.ToLower())
+                {
+                    match = true;
+                    book.CheckOut();
+                    break;
+                }
+            }
+
+                if (match == false)
+            {
+                List<Option> options = new List<Option>
+                {
+                    new Option("Search anothe rbook by title", TitleSearch),
+                    new Option("Return to main menu", MainMenu),
+                    new Option("Quit", SaveAndQuit)
+                };
+                Menu.MenuStart(options, $"Sorry, \"{userTitle}\" does not match any titles in this library.");
+            }
         }
 
         static void TitleSearch()
@@ -116,39 +180,60 @@ namespace MidtermLibraryTerminal
             {
                 Title = "Test book one",
                 Author = "Test author one",
+<<<<<<< HEAD
                 CheckedOut = false,
+=======
+                Status = true,
+>>>>>>> KatesBranch
                 DueDate = DateTime.Now
             };
             Book bookTwo = new Book
             {
                 Title = "Test book two",
                 Author = "Test author two",
+<<<<<<< HEAD
                 CheckedOut = false,
+=======
+                Status = true,
+>>>>>>> KatesBranch
                 DueDate = DateTime.Now
             };
             Book bookThree = new Book
             {
                 Title = "Test book three",
                 Author = "Test author three",
+<<<<<<< HEAD
                 CheckedOut = false,
+=======
+                Status = false,
+>>>>>>> KatesBranch
                 DueDate = DateTime.Today
             };
             Book bookFour = new Book
             {
                 Title = "Test book four",
                 Author = "Test author four",
+<<<<<<< HEAD
                 CheckedOut = false,
+=======
+                Status = true,
+>>>>>>> KatesBranch
                 DueDate = DateTime.Now
             };
             Book bookFive = new Book
             {
                 Title = "Test book five",
                 Author = "Test author five",
+<<<<<<< HEAD
                 CheckedOut = false,
+=======
+                Status = true,
+>>>>>>> KatesBranch
                 DueDate = DateTime.Now
             };
 
             List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+<<<<<<< HEAD
 
             Console.WriteLine("Please enter a book title: ");
             var userTitle = Console.ReadLine().ToLower();
@@ -174,7 +259,32 @@ namespace MidtermLibraryTerminal
                 };
                 Menu.MenuStart(options, $"Sorry, \"{userTitle}\" does not match any titles in this library.");
             }
+=======
+>>>>>>> KatesBranch
 
+            Console.WriteLine("Please enter an author:");
+            var userAuthor = Console.ReadLine().ToLower();
+            bool match = false;
+            foreach (var book in bookList)
+            {
+                if (userAuthor == book.Author.ToLower())
+                {
+                    match = true;
+                    book.CheckOut();
+                    break;
+                }
+            }
+
+            if (match == false)
+            {
+                List<Option> options = new List<Option>
+                {
+                    new Option("Search another book by author", AuthorSearch),
+                    new Option("Return to main menu", MainMenu),
+                    new Option("Quit", SaveAndQuit)
+                };
+                Menu.MenuStart(options, $"Sorry, \"{userAuthor}\" does not match any authors in this library.");
+            }
         }
         static void AuthorSearch()
         {
