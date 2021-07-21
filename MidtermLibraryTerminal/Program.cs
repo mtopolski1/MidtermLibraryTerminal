@@ -168,7 +168,7 @@ namespace MidtermLibraryTerminal
             {
                 List<Option> options = new List<Option>
                 {
-                    new Option("Search anothe rbook by title", TitleSearch),
+                    new Option("Search another book by title", TitleSearch),
                     new Option("Return to main menu", MainMenu),
                     new Option("Quit", SaveAndQuit)
                 };
@@ -241,7 +241,37 @@ namespace MidtermLibraryTerminal
         }
         static void BookReturn()
         {
+            List<Book> bookList = new List<Book>();
 
+            Console.WriteLine("Please enter a book title to return:");
+            var userReturn = Console.ReadLine().ToLower();
+            bool match = false;
+            foreach (var book in bookList)
+            {
+                if (userReturn == book.Title.ToLower())
+                {
+                    if (book.CheckedOut == true)
+                    {
+                    match = true;
+                    book.CheckedOut = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That isn't checked out.");
+                    }
+                    break;
+                }
+            }
+            if (match == false)
+            {
+                List<Option> options = new List<Option>
+                {
+                    new Option("Search another book title to return", BookReturn),
+                    new Option("Return to main menu", MainMenu),
+                    new Option("Quit", SaveAndQuit)
+                };
+                Menu.MenuStart(options, $"Sorry, \"{userReturn}\" does not match any authors in this library.");
+            }
         }
         public static void SaveAndQuit()
         {
