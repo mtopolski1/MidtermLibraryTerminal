@@ -103,14 +103,6 @@ namespace MidtermLibraryTerminal
             
         }
         
-        static void BookListConfirmCheckout(Book input)
-        {
-            input.CheckedOut = true;
-            input.DueDate = DateTime.Today.AddDays(14);
-            
-        }
-
-        
         public static void TitleSearch()
         {
             Book bookOne = new Book
