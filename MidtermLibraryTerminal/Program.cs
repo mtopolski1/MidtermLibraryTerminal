@@ -116,35 +116,35 @@ namespace MidtermLibraryTerminal
             {
                 Title = "Test book one",
                 Author = "Test author one",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookTwo = new Book
             {
                 Title = "Test book two",
                 Author = "Test author two",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookThree = new Book
             {
                 Title = "Test book three",
                 Author = "Test author three",
-                Status = false,
+                CheckedOut = true,
                 DueDate = DateTime.Today
             };
             Book bookFour = new Book
             {
                 Title = "Test book four",
                 Author = "Test author four",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookFive = new Book
             {
                 Title = "Test book five",
                 Author = "Test author five",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
 
@@ -164,7 +164,7 @@ namespace MidtermLibraryTerminal
                 }
             }
 
-                if (match == false)
+            if (match == false)
             {
                 List<Option> options = new List<Option>
                 {
@@ -181,35 +181,35 @@ namespace MidtermLibraryTerminal
             {
                 Title = "Test book one",
                 Author = "Test author one",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookTwo = new Book
             {
                 Title = "Test book two",
                 Author = "Test author two",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookThree = new Book
             {
                 Title = "Test book three",
                 Author = "Test author three",
-                Status = false,
+                CheckedOut = true,
                 DueDate = DateTime.Today
             };
             Book bookFour = new Book
             {
                 Title = "Test book four",
                 Author = "Test author four",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
             Book bookFive = new Book
             {
                 Title = "Test book five",
                 Author = "Test author five",
-                Status = true,
+                CheckedOut = false,
                 DueDate = DateTime.Now
             };
 
