@@ -40,7 +40,7 @@ namespace MidtermLibraryTerminal
                     List<Option> AfterCheckoutOptions = new List<Option>
                     {
                         new Option("Return to main menu", Program.MainMenu),
-                        new Option("Quit", Program.SaveAndQuit)
+                        //new Option("Quit", Program.SaveAndQuit)
                     };
                     Menu.MenuStart(AfterCheckoutOptions, $"Your book has been successfully checked out and is due back at {DueDate}.\nWhat would you like to do?");
                 }
@@ -52,7 +52,7 @@ namespace MidtermLibraryTerminal
                 {
                     new Option("Return to Book List", Program.ListBooks),
                     new Option("Return to Main Menu", Program.MainMenu),
-                    new Option("Quit", Program.SaveAndQuit)
+                    //new Option("Quit", Program.SaveAndQuit)
                 };
                 Menu.MenuStart(invalidCheckoutOptions, $"That book has already been checked out and is due back at {DueDate}.");
             }
