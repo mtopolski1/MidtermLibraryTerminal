@@ -110,13 +110,7 @@ namespace MidtermLibraryTerminal
             
         }
 
-        static void TitleSearch()
-        {
-            input.CheckedOut = true;
-            input.DueDate = DateTime.Today.AddDays(14);
-
-        }
-
+        
         public static void TitleSearch()
         {
             Book bookOne = new Book
@@ -248,20 +242,7 @@ namespace MidtermLibraryTerminal
                 Menu.MenuStart(options, $"Sorry, \"{userAuthor}\" does not match any titles in this library.");
             }
         }
-        public static void BookReturn()
-        {
-            bool ReturnYes = true;
-
-            Console.WriteLine("Are you returning a book?");
-            if(ReturnYes == true)
-            {
-                return;
-            }
-            else
-            {
-                return;
-            }
-        }
+       
         static void BookReturn()
         {
             List<Book> bookList = new List<Book>();
