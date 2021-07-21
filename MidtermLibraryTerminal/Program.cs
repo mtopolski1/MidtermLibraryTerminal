@@ -10,6 +10,7 @@ namespace MidtermLibraryTerminal
         static void Main(string[] args)
         {
             Console.WriteLine("This is the Midterm Project! Library Terminal. Team members Kate, Morgan and Mark");
+            FileCreation();
             MainMenu();
 
             #region Menu Testing
@@ -25,6 +26,14 @@ namespace MidtermLibraryTerminal
             //List<Option> testList = new List<Option> { testOne, testTwo, testThree, testFour, testFive };
             //Menu.MenuStart(testList, "Welcome to the Library Terminal. Would you like to:\n");
             #endregion
+        }
+
+        public static void FileCreation()
+        {
+            if (!File.Exists("BookList.txt"))
+            {
+                File.Create("BookList.txt");
+            }
         }
         public static void MainMenu()
         {
@@ -278,7 +287,26 @@ namespace MidtermLibraryTerminal
             }
         }
 
-        static void SaveBookList(List<Book> books)
+        public static void ReadBookList()
+        {
+
+            StreamReader streamReaderBookList = new StreamReader("BookList.txt");
+
+            List<string> lines = File.ReadAllLines("BookList.txt").ToList();
+
+            foreach (string line in lines)
+            {
+                var splitline = line.Split('|');
+                Book currentBook = new Book();
+                currentBook.Title = splitline[0];
+                currentBook.Author = splitline[1];
+                currentBook.DueDate = DateTime.Parse(splitline[2]);
+                currentBook.CheckedOut = bool.Parse(splitline[3]);
+            }
+
+        }
+
+        public static void SaveBookList(List<Book> books)
         {
             //get the current book information
 
