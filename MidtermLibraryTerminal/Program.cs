@@ -10,7 +10,7 @@ namespace MidtermLibraryTerminal
         
         static void Main(string[] args)
         {
-            FileCreation();
+            FileManager.FileCreation();
             MainMenu();
 
             #region Menu Testing
@@ -44,7 +44,7 @@ namespace MidtermLibraryTerminal
         public static void ListBooks()
         {
             Console.Clear();
-            var bookList = ReadBookList();
+            var bookList = FileManager.ReadBookList();
             //make the book list be scrollable
 
             List<Option> bookOptions = new List<Option>();

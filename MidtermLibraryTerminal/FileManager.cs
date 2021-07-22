@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace MidtermLibraryTerminal
@@ -35,7 +36,7 @@ namespace MidtermLibraryTerminal
         public static List<Book> ReadBookList()
         {
 
-            StreamReader streamReaderBookList = new StreamReader("BookList.txt");
+            using StreamReader streamReaderBookList = new StreamReader("BookList.txt");
 
             List<string> lines = File.ReadAllLines("BookList.txt").ToList();
             List<Book> bookList = new List<Book>();
@@ -58,7 +59,7 @@ namespace MidtermLibraryTerminal
         {
             //get the current book information
 
-            StreamWriter streamWriterBookList = new StreamWriter("BookList.txt");
+            using StreamWriter streamWriterBookList = new StreamWriter("BookList.txt");
             foreach (var item in books)
             {
                 streamWriterBookList.WriteLine($"{item.Title}|{item.Author}|{item.DueDate.ToString()}|{item.CheckedOut.ToString()}");
