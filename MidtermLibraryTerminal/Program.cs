@@ -120,14 +120,16 @@ namespace MidtermLibraryTerminal
             Console.WriteLine("Please enter a book title to return:");
             var userReturn = Console.ReadLine().ToLower();
             bool match = false;
+            bool checkedOutVerification = false;
             foreach (var book in bookList)
             {
                 if (userReturn == book.Title.ToLower())
                 {
+                    match = true;
                     if (book.CheckedOut == true)
                     {
-                    match = true;
-                    book.CheckedOut = false;
+                        checkedOutVerification = true;
+                        book.CheckedOut = false;
                     }
                     break;
                 }
@@ -141,6 +143,16 @@ namespace MidtermLibraryTerminal
                     new Option("Quit", Quit)
                 };
                 Menu.MenuStart(options, $"Sorry, \"{userReturn}\" does not exist in the library collection.");
+            }
+            else if(checkedOutVerification == false)
+            {
+                List<Option> options = new List<Option>
+                {
+                    new Option("Search another book title to return", BookReturn),
+                    new Option("Return to main menu", MainMenu),
+                    new Option("Quit", Quit)
+                };
+                Menu.MenuStart(options, $"\"{userReturn}\" has not been checked out and cannot be returned.");
             }
             else
             {
