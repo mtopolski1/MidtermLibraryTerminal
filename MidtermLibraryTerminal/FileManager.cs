@@ -16,8 +16,6 @@ namespace MidtermLibraryTerminal
         {
             if (!File.Exists("BookList.txt"))
             {
-                //File.Create("BookList.txt");
-                //FileManager();
                 using StreamWriter streamWriter = new StreamWriter("BookList.txt");
                 streamWriter.WriteLine("I Am Legend|Richard Matheson|Jan 1, 2020|false");
                 streamWriter.WriteLine("2001: A Space Odyssey|Arthur C. Clarke|Jan 1, 2020|false");
@@ -65,21 +63,5 @@ namespace MidtermLibraryTerminal
                 streamWriterBookList.WriteLine($"{item.Title}|{item.Author}|{item.DueDate.ToString()}|{item.CheckedOut.ToString()}");
             }
         }
-        //public static void FileManager()
-        //{
-        //    using StreamWriter streamWriter = new StreamWriter("BookList.txt");
-        //    streamWriter.WriteLine("I Am Legend|Richard Matheson|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("2001: A Space Odyssey|Arthur C. Clarke|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("The Hero of Ages|Brandon Sanderson|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("Ender's Game|Orson Scott Card|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("Frog and Toad Are Friends|Arnold Lobel|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("Fantasyland|Kurt Andersen|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("The Legend of Huma|Richard A. Knaak|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("A Contract with God|Will Eisner|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("Ex-Heroes|Peter Clines|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("Sisters of the Sword|Maya Snow|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("1984|George Orwell|Jan 1, 2020|false");
-        //    streamWriter.WriteLine("The Lightning Thief|Rick Riordan|Jan 1, 2020|false");
-        //}
     }
 }

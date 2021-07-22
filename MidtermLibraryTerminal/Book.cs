@@ -22,15 +22,6 @@ namespace MidtermLibraryTerminal
         }
         public void CheckOut()
         {
-            //var bookList = Program.ReadBookList();
-            //foreach (var book in bookList)
-            //{
-            //    if (Title == book.Title)
-            //    {
-
-            //    }
-            //}
-
             bool checkoutValidation = false;
             Console.Clear();
             if (!CheckedOut)
