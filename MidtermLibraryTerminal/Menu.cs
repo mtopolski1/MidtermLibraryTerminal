@@ -23,7 +23,7 @@ namespace MidtermLibraryTerminal
 
                 if (keyInfo.Key == ConsoleKey.DownArrow)
                 {
-                    if(index + 1 < options.Count) //if there is an option below the current option, allow the down arrow input
+                    if (index + 1 < options.Count) //if there is an option below the current option, allow the down arrow input
                     {
                         index++; //set the index to the next option BEFORE calling the WriteMenu. otherwise it will just write out the same menu
                         WriteMenu(options, options[index], prompt);
@@ -38,7 +38,7 @@ namespace MidtermLibraryTerminal
                     }
                 }
 
-                if(keyInfo.Key == ConsoleKey.Enter)
+                if (keyInfo.Key == ConsoleKey.Enter)
                 {
                     options[index].Selected.Invoke(); //do the Action associated with the option
                     index = 0; //reset the index back to the beginning
@@ -47,13 +47,12 @@ namespace MidtermLibraryTerminal
             }
             while (menuLoop == true);
         }
-
         public static void WriteMenu(List<Option> options, Option selectedOption, string prompt)
         {
             Console.Clear();
             Console.WriteLine($"{prompt}\n");
 
-            foreach(Option option in options)
+            foreach (Option option in options)
             {
                 if (option == selectedOption)
                 {
