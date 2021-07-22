@@ -7,7 +7,7 @@ namespace MidtermLibraryTerminal
 {
     class Program
     {
-        
+
         static void Main(string[] args)
         {
             FileManager.FileCreation();
@@ -33,7 +33,7 @@ namespace MidtermLibraryTerminal
             //make the book list be scrollable
 
             List<Option> bookOptions = new List<Option>();
-            
+
             foreach (var book in bookList)
             {
                 Option option = new Option($"{book.Title} - {book.Author}", book.CheckOut);
@@ -47,21 +47,21 @@ namespace MidtermLibraryTerminal
 
             Menu.MenuStart(bookOptions, "Please select a book from the list.");
             //back to the previous menu
-            
+
         }
-        
+
         public static void TitleSearch()
         {
             Console.Clear();
             var bookList = FileManager.ReadBookList();
 
             Console.WriteLine("Please enter a book title: ");
-            var userTitle = Console.ReadLine().ToLower();
+            var userTitle = Console.ReadLine();
 
             bool match = false;
             foreach (var book in bookList)
             {
-                if (userTitle == book.Title.ToLower())
+                if (userTitle.ToLower() == book.Title.ToLower())
                 {
                     match = true;
                     book.CheckOut();
@@ -87,12 +87,12 @@ namespace MidtermLibraryTerminal
             var bookList = FileManager.ReadBookList();
 
             Console.WriteLine("Please enter a book author: ");
-            var userAuthor = Console.ReadLine().ToLower();
+            var userAuthor = Console.ReadLine();
 
             bool match = false;
             foreach (var book in bookList)
             {
-                if (userAuthor == book.Author.ToLower())
+                if (userAuthor.ToLower() == book.Author.ToLower())
                 {
                     match = true;
                     book.CheckOut();
@@ -111,7 +111,7 @@ namespace MidtermLibraryTerminal
                 Menu.MenuStart(options, $"Sorry, \"{userAuthor}\" does not match any titles in this library.");
             }
         }
-       
+
         static void BookReturn()
         {
             Console.Clear();
@@ -130,6 +130,10 @@ namespace MidtermLibraryTerminal
                     {
                         checkedOutVerification = true;
                         book.CheckedOut = false;
+                    }
+                    else if (book.CheckedOut == true)
+                    {
+                        Console.WriteLine("$");
                     }
                     break;
                 }
@@ -157,7 +161,7 @@ namespace MidtermLibraryTerminal
             else
             {
                 FileManager.SaveBookList(bookList);
-                List<Option> options = new List<Option> 
+                List<Option> options = new List<Option>
                 {
                     new Option("Search another book title to return", BookReturn),
                     new Option("Return to main menu", MainMenu),
