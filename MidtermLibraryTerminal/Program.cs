@@ -7,32 +7,20 @@ namespace MidtermLibraryTerminal
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
-            Console.WriteLine("This is the Midterm Project! Library Terminal. Team members Kate, Morgan and Mark");
+            FileManager.FileCreation();
             MainMenu();
-
-            #region Menu Testing
-            ////the Action for the option MUST be a method that does not have a parameter. 
-            ////unfortunately that means we will have to access the file with all of the books in it in each and every method
-            Option testOne = new Option("View entire book list", ListBooks);
-            Option testTwo = new Option("Search by Title", TitleSearch);
-            Option testThree = new Option("Search by Author", AuthorSearch);
-            Option testFour = new Option("Return a book", BookReturn);
-            //Option testFive = new Option("Quit", SaveAndQuit);
-
-
-            //List<Option> testList = new List<Option> { testOne, testTwo, testThree, testFour, testFive };
-            //Menu.MenuStart(testList, "Welcome to the Library Terminal. Would you like to:\n");
-            #endregion
         }
+
         public static void MainMenu()
         {
             Option listBooks = new Option("View entire book list", ListBooks);
             Option titleSearch = new Option("Search by Title", TitleSearch);
             Option authorSearch = new Option("Search by Author", AuthorSearch);
             Option bookReturn = new Option("Return a book", BookReturn);
-            Option saveQuit = new Option("Quit", SaveAndQuit);
+            Option saveQuit = new Option("Quit", Quit);
 
 
             List<Option> testList = new List<Option> { listBooks, titleSearch, authorSearch, bookReturn, saveQuit };
@@ -41,62 +29,21 @@ namespace MidtermLibraryTerminal
         public static void ListBooks()
         {
             Console.Clear();
-
+            var bookList = FileManager.ReadBookList();
             //make the book list be scrollable
 
-            Book bookOne = new Book
+            List<Option> bookOptions = new List<Option>();
+            
+            foreach (var book in bookList)
             {
-                Title = "Test book one",
-                Author = "Test author one",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookTwo = new Book
-            {
-                Title = "Test book two",
-                Author = "Test author two",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookThree = new Book
-            {
-                Title = "Test book three",
-                Author = "Test author three",
-                CheckedOut = true,
-                DueDate = DateTime.Today
-            };
-            Book bookFour = new Book
-            {
-                Title = "Test book four",
-                Author = "Test author four",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookFive = new Book
-            {
-                Title = "Test book five",
-                Author = "Test author five",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-
-            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
-
-            foreach (Book book in bookList)
-            {
-                Console.WriteLine($"{book.Title} - {book.Author}");
+                Option option = new Option($"{book.Title} - {book.Author}", book.CheckOut);
+                bookOptions.Add(option);
             }
 
-            List<Option> bookOptions = new List<Option>
-            {
-                new Option($"{bookOne.Title} - {bookOne.Author}", bookOne.CheckOut),
-                new Option($"{bookTwo.Title} - {bookTwo.Author}", bookTwo.CheckOut),
-                new Option($"{bookThree.Title} - {bookThree.Author}", bookThree.CheckOut),
-                new Option($"{bookFour.Title} - {bookFour.Author}", bookOne.CheckOut),
-                new Option($"{bookFive.Title} - {bookFive.Author}", bookOne.CheckOut),
-                new Option("Return to Main Menu", MainMenu),
-                new Option("Quit", SaveAndQuit)
-            };
+            Option menuOption = new Option("Return to Main Menu", MainMenu);
+            Option quitOption = new Option("Quit", Quit);
+            bookOptions.Add(menuOption);
+            bookOptions.Add(quitOption);
 
             Menu.MenuStart(bookOptions, "Please select a book from the list.");
             //back to the previous menu
@@ -105,43 +52,8 @@ namespace MidtermLibraryTerminal
         
         public static void TitleSearch()
         {
-            Book bookOne = new Book
-            {
-                Title = "Test book one",
-                Author = "Test author one",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookTwo = new Book
-            {
-                Title = "Test book two",
-                Author = "Test author two",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookThree = new Book
-            {
-                Title = "Test book three",
-                Author = "Test author three",
-                CheckedOut = true,
-                DueDate = DateTime.Today
-            };
-            Book bookFour = new Book
-            {
-                Title = "Test book four",
-                Author = "Test author four",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookFive = new Book
-            {
-                Title = "Test book five",
-                Author = "Test author five",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-
-            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+            Console.Clear();
+            var bookList = FileManager.ReadBookList();
 
             Console.WriteLine("Please enter a book title: ");
             var userTitle = Console.ReadLine().ToLower();
@@ -163,7 +75,7 @@ namespace MidtermLibraryTerminal
                 {
                     new Option("Search another book by title", TitleSearch),
                     new Option("Return to main menu", MainMenu),
-                    new Option("Quit", SaveAndQuit)
+                    new Option("Quit", Quit)
                 };
                 Menu.MenuStart(options, $"Sorry, \"{userTitle}\" does not match any titles in this library.");
             }
@@ -171,43 +83,8 @@ namespace MidtermLibraryTerminal
 
         public static void AuthorSearch()
         {
-            Book bookOne = new Book
-            {
-                Title = "Test book one",
-                Author = "Test author one",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookTwo = new Book
-            {
-                Title = "Test book two",
-                Author = "Test author two",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookThree = new Book
-            {
-                Title = "Test book three",
-                Author = "Test author three",
-                CheckedOut = true,
-                DueDate = DateTime.Today
-            };
-            Book bookFour = new Book
-            {
-                Title = "Test book four",
-                Author = "Test author four",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookFive = new Book
-            {
-                Title = "Test book five",
-                Author = "Test author five",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-
-            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+            Console.Clear();
+            var bookList = FileManager.ReadBookList();
 
             Console.WriteLine("Please enter a book author: ");
             var userAuthor = Console.ReadLine().ToLower();
@@ -229,7 +106,7 @@ namespace MidtermLibraryTerminal
                 {
                     new Option("Search another book by Author", AuthorSearch),
                     new Option("Return to Main Menu", MainMenu),
-                    new Option("Quit", SaveAndQuit)
+                    new Option("Quit", Quit)
                 };
                 Menu.MenuStart(options, $"Sorry, \"{userAuthor}\" does not match any titles in this library.");
             }
@@ -237,7 +114,8 @@ namespace MidtermLibraryTerminal
        
         static void BookReturn()
         {
-            List<Book> bookList = new List<Book>();
+            Console.Clear();
+            var bookList = FileManager.ReadBookList();
 
             Console.WriteLine("Please enter a book title to return:");
             var userReturn = Console.ReadLine().ToLower();
@@ -251,10 +129,6 @@ namespace MidtermLibraryTerminal
                     match = true;
                     book.CheckedOut = false;
                     }
-                    else
-                    {
-                        Console.WriteLine("That isn't checked out.");
-                    }
                     break;
                 }
             }
@@ -264,22 +138,27 @@ namespace MidtermLibraryTerminal
                 {
                     new Option("Search another book title to return", BookReturn),
                     new Option("Return to main menu", MainMenu),
-                    new Option("Quit", SaveAndQuit)
+                    new Option("Quit", Quit)
                 };
-                Menu.MenuStart(options, $"Sorry, \"{userReturn}\" does not match any authors in this library.");
+                Menu.MenuStart(options, $"Sorry, \"{userReturn}\" does not exist in the library collection.");
             }
-        }
-
-        static void SaveBookList(List<Book> books)
-        {
-            //get the current book information
-
-            StreamWriter streamWriterBookList = new StreamWriter("BookList.txt");
-            foreach (var item in books)
+            else
             {
-                streamWriterBookList.WriteLine($"{item.Title}|{item.Author}|{item.DueDate.ToString()}|{item.CheckedOut.ToString()}");
+                FileManager.SaveBookList(bookList);
+                List<Option> options = new List<Option> 
+                {
+                    new Option("Search another book title to return", BookReturn),
+                    new Option("Return to main menu", MainMenu),
+                    new Option("Quit", Quit)
+                };
+                Menu.MenuStart(options, $"The book {userReturn} was successfully returned.");
             }
         }
 
+        public static void Quit()
+        {
+            Console.Clear();
+            Console.WriteLine("Goodbye!");
+        }
     }
 }
