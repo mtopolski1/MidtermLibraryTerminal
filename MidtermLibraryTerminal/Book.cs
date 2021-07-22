@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MidtermLibraryTerminal
 {
-    class Book
+    public class Book
     {
         public string Title { get; set; }
         public string Author { get; set; }
@@ -22,6 +22,15 @@ namespace MidtermLibraryTerminal
         }
         public void CheckOut()
         {
+            //var bookList = Program.ReadBookList();
+            //foreach (var book in bookList)
+            //{
+            //    if (Title == book.Title)
+            //    {
+
+            //    }
+            //}
+
             bool checkoutValidation = false;
             Console.Clear();
             if (!CheckedOut)
