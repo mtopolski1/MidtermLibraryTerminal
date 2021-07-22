@@ -1,12 +1,12 @@
 ﻿Title Book 1|Author|Jan 1, 2009|true or false
-Book 2, Author, Due Date
-Book 3, Author, Due Date
-Book 4, Author, Due Date
-Book 5, Author, Due Date
-Book 6, Author, Due Date
-Book 7, Author, Due Date
-Book 8, Author, Due Date
-Book 9, Author, Due Date
-Book 10, Author, Due Date
-Book 11, Author, Due Date
-Book 12, Author, Due Date
+Title Book 2|Author|Jan 1, 2009|true or false
+Title Book 3|Author|Jan 1, 2009|true or false
+Title Book 4|Author|Jan 1, 2009|true or false
+Title Book 5|Author|Jan 1, 2009|true or false
+Title Book 6|Author|Jan 1, 2009|true or false
+Title Book 7|Author|Jan 1, 2009|true or false
+Title Book 8|Author|Jan 1, 2009|true or false
+Title Book 9|Author|Jan 1, 2009|true or false
+Title Book 10|Author|Jan 1, 2009|true or false
+Title Book 11|Author|Jan 1, 2009|true or false
+Title Book 12|Author|Jan 1, 2009|true or false

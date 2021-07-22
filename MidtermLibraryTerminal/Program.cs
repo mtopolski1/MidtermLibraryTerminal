@@ -243,20 +243,10 @@ namespace MidtermLibraryTerminal
         }
         public static void BookReturn()
         {
-            bool ReturnYes = true;
 
-            Console.WriteLine("Are you returning a book?");
-            if(ReturnYes == true)
-            {
-                return;
-            }
-            else
-            {
-                return;
-            }
         }
 
-        static void ReadBookList()
+        public static void ReadBookList()
         {
 
             StreamReader streamReaderBookList = new StreamReader("BookList.txt");
@@ -275,7 +265,7 @@ namespace MidtermLibraryTerminal
                 
         }
 
-        static void SaveBookList(List<Book> books)
+        public static void SaveBookList(List<Book> books)
         {
             //get the current book information
 
