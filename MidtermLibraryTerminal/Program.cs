@@ -80,43 +80,45 @@ namespace MidtermLibraryTerminal
         public static void TitleSearch()
         {
             Console.Clear();
-            Book bookOne = new Book
-            {
-                Title = "Test book one",
-                Author = "Test author one",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookTwo = new Book
-            {
-                Title = "Test book two",
-                Author = "Test author two",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookThree = new Book
-            {
-                Title = "Test book three",
-                Author = "Test author three",
-                CheckedOut = true,
-                DueDate = DateTime.Today
-            };
-            Book bookFour = new Book
-            {
-                Title = "Test book four",
-                Author = "Test author four",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookFive = new Book
-            {
-                Title = "Test book five",
-                Author = "Test author five",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
+            var bookList = FileManager.ReadBookList();
+            //Book bookOne = new Book
+            //{
+            //    Title = "Test book one",
+            //    Author = "Test author one",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookTwo = new Book
+            //{
+            //    Title = "Test book two",
+            //    Author = "Test author two",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookThree = new Book
+            //{
+            //    Title = "Test book three",
+            //    Author = "Test author three",
+            //    CheckedOut = true,
+            //    DueDate = DateTime.Today
+            //};
+            //Book bookFour = new Book
+            //{
+            //    Title = "Test book four",
+            //    Author = "Test author four",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookFive = new Book
+            //{
+            //    Title = "Test book five",
+            //    Author = "Test author five",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
 
-            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+            //List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+
 
             Console.WriteLine("Please enter a book title: ");
             var userTitle = Console.ReadLine().ToLower();
@@ -147,43 +149,44 @@ namespace MidtermLibraryTerminal
         public static void AuthorSearch()
         {
             Console.Clear();
-            Book bookOne = new Book
-            {
-                Title = "Test book one",
-                Author = "Test author one",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookTwo = new Book
-            {
-                Title = "Test book two",
-                Author = "Test author two",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookThree = new Book
-            {
-                Title = "Test book three",
-                Author = "Test author three",
-                CheckedOut = true,
-                DueDate = DateTime.Today
-            };
-            Book bookFour = new Book
-            {
-                Title = "Test book four",
-                Author = "Test author four",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookFive = new Book
-            {
-                Title = "Test book five",
-                Author = "Test author five",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
+            var bookList = FileManager.ReadBookList();
+            //Book bookOne = new Book
+            //{
+            //    Title = "Test book one",
+            //    Author = "Test author one",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookTwo = new Book
+            //{
+            //    Title = "Test book two",
+            //    Author = "Test author two",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookThree = new Book
+            //{
+            //    Title = "Test book three",
+            //    Author = "Test author three",
+            //    CheckedOut = true,
+            //    DueDate = DateTime.Today
+            //};
+            //Book bookFour = new Book
+            //{
+            //    Title = "Test book four",
+            //    Author = "Test author four",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookFive = new Book
+            //{
+            //    Title = "Test book five",
+            //    Author = "Test author five",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
 
-            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+            //List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
 
             Console.WriteLine("Please enter a book author: ");
             var userAuthor = Console.ReadLine().ToLower();
@@ -214,43 +217,44 @@ namespace MidtermLibraryTerminal
         static void BookReturn()
         {
             Console.Clear();
-            Book bookOne = new Book
-            {
-                Title = "Test book one",
-                Author = "Test author one",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookTwo = new Book
-            {
-                Title = "Test book two",
-                Author = "Test author two",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookThree = new Book
-            {
-                Title = "Test book three",
-                Author = "Test author three",
-                CheckedOut = true,
-                DueDate = DateTime.Today
-            };
-            Book bookFour = new Book
-            {
-                Title = "Test book four",
-                Author = "Test author four",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
-            Book bookFive = new Book
-            {
-                Title = "Test book five",
-                Author = "Test author five",
-                CheckedOut = false,
-                DueDate = DateTime.Now
-            };
+            var bookList = FileManager.ReadBookList();
+            //Book bookOne = new Book
+            //{
+            //    Title = "Test book one",
+            //    Author = "Test author one",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookTwo = new Book
+            //{
+            //    Title = "Test book two",
+            //    Author = "Test author two",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookThree = new Book
+            //{
+            //    Title = "Test book three",
+            //    Author = "Test author three",
+            //    CheckedOut = true,
+            //    DueDate = DateTime.Today
+            //};
+            //Book bookFour = new Book
+            //{
+            //    Title = "Test book four",
+            //    Author = "Test author four",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
+            //Book bookFive = new Book
+            //{
+            //    Title = "Test book five",
+            //    Author = "Test author five",
+            //    CheckedOut = false,
+            //    DueDate = DateTime.Now
+            //};
 
-            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
+            //List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
 
             Console.WriteLine("Please enter a book title to return:");
             var userReturn = Console.ReadLine().ToLower();
@@ -279,6 +283,7 @@ namespace MidtermLibraryTerminal
             }
             else
             {
+                FileManager.SaveBookList(bookList);
                 List<Option> options = new List<Option> 
                 {
                     new Option("Search another book title to return", BookReturn),
