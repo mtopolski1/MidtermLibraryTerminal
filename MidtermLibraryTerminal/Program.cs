@@ -36,6 +36,7 @@ namespace MidtermLibraryTerminal
                 Title = "Test book one",
                 Author = "Test author one",
                 CheckedOut = false,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookTwo = new Book
@@ -43,6 +44,7 @@ namespace MidtermLibraryTerminal
                 Title = "Test book two",
                 Author = "Test author two",
                 CheckedOut = false,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookThree = new Book
@@ -56,7 +58,7 @@ namespace MidtermLibraryTerminal
             {
                 Title = "Test book four",
                 Author = "Test author four",
-                CheckedOut = false,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookFive = new Book
@@ -82,14 +84,14 @@ namespace MidtermLibraryTerminal
             {
                 Title = "Test book one",
                 Author = "Test author one",
-                CheckedOut = false,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookTwo = new Book
             {
                 Title = "Test book two",
                 Author = "Test author two",
-                CheckedOut = false,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookThree = new Book
@@ -103,14 +105,14 @@ namespace MidtermLibraryTerminal
             {
                 Title = "Test book four",
                 Author = "Test author four",
-                CheckedOut = false,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
             Book bookFive = new Book
             {
                 Title = "Test book five",
                 Author = "Test author five",
-                CheckedOut = false,
+                CheckedOut = true,
                 DueDate = DateTime.Now
             };
 
@@ -130,6 +132,16 @@ namespace MidtermLibraryTerminal
                 }
             }
 
+                if (match == false)
+            {
+                List<Option> options = new List<Option>
+                {
+                    new Option("Search another book by title", TitleSearch),
+                    new Option("Return to main menu", MainMenu),
+                    new Option("Quit", SaveAndQuit)
+                };
+                Menu.MenuStart(options, $"Sorry, \"{userTitle}\" does not match any titles in this library.");
+            }
         }
         static void AuthorSearch()
         {
@@ -184,70 +196,49 @@ namespace MidtermLibraryTerminal
                 }
             }
 
+            if (match == false)
+            {
+                List<Option> options = new List<Option>
+                {
+                    new Option("Search another book by author", AuthorSearch),
+                    new Option("Return to main menu", MainMenu),
+                    new Option("Quit", SaveAndQuit)
+                };
+                Menu.MenuStart(options, $"Sorry, \"{userAuthor}\" does not match any titles in this library.");
+            }
         }
         static void BookReturn()
         {
-            Book bookOne = new Book
-            {
-                Title = "Test book one",
-                Author = "Test author one",
-                CheckedOut = true,
-                DueDate = DateTime.Now
-            };
-            Book bookTwo = new Book
-            {
-                Title = "Test book two",
-                Author = "Test author two",
-                CheckedOut = true,
-                DueDate = DateTime.Now
-            };
-            Book bookThree = new Book
-            {
-                Title = "Test book three",
-                Author = "Test author three",
-                CheckedOut = false,
-                DueDate = DateTime.Today
-            };
-            Book bookFour = new Book
-            {
-                Title = "Test book four",
-                Author = "Test author four",
-                CheckedOut = true,
-                DueDate = DateTime.Now
-            };
-            Book bookFive = new Book
-            {
-                Title = "Test book five",
-                Author = "Test author five",
-                CheckedOut = true,
-                DueDate = DateTime.Now
-            };
+            List<Book> bookList = new List<Book>();
 
-            List<Book> bookList = new List<Book> { bookOne, bookTwo, bookThree, bookFour, bookFive };
-
-            Console.WriteLine("Please enter book title to return:");
+            Console.WriteLine("Please enter a book title to return:");
             var userReturn = Console.ReadLine().ToLower();
             bool match = false;
             foreach (var book in bookList)
             {
                 if (userReturn == book.Title.ToLower())
                 {
-                    Console.WriteLine($"Are you sure you want to return{userReturn}?");
+                    if (book.CheckedOut == true)
+                    {
                     match = true;
                     book.CheckedOut = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("That isn't checked out.");
+                    }
                     break;
                 }
             }
-
             if (match == false)
             {
                 List<Option> options = new List<Option>
                 {
-                    new Option("Return another book", BookReturn),
+                    new Option("Search another book title to return", BookReturn),
                     new Option("Return to main menu", MainMenu),
                     new Option("Quit", SaveAndQuit)
                 };
-                Menu.MenuStart(options, $"Sorry, \"{userReturn}\" does not match any titles in this library.");
+                Menu.MenuStart(options, $"Sorry, \"{userReturn}\" does not match any authors in this library.");
             }
         }
         static void SaveAndQuit()
